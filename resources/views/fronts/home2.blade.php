@@ -46,7 +46,6 @@
             font-family: 'Nunito', sans-serif;
             color: var(--dark-color);
             line-height: 1.6;
-            overflow-x: hidden;
             background-color: #ffffff;
         }
 
@@ -63,10 +62,11 @@
         }
 
         .container {
+            overflow-x: hidden;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
 
         /* Header Styles */
@@ -91,6 +91,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .contact-info span {
@@ -190,7 +197,7 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -1078,30 +1085,35 @@
             gap: 3rem;
         }
 
-        .anthem, .pledge {
+        .anthem,
+        .pledge {
             background: linear-gradient(135deg, rgba(67, 97, 238, 0.05), rgba(247, 37, 133, 0.05));
             padding: 2rem;
             border-radius: 20px;
             transition: var(--transition);
         }
 
-        .anthem:hover, .pledge:hover {
+        .anthem:hover,
+        .pledge:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
         }
 
-        .anthem h3, .pledge h3 {
+        .anthem h3,
+        .pledge h3 {
             color: var(--primary-color);
             margin-bottom: 1.5rem;
             text-align: center;
         }
 
-        .anthem-content, .pledge-content {
+        .anthem-content,
+        .pledge-content {
             font-style: italic;
             line-height: 1.8;
         }
 
-        .anthem-content p, .pledge-content p {
+        .anthem-content p,
+        .pledge-content p {
             margin-bottom: 1rem;
         }
 
@@ -1405,40 +1417,74 @@
             }
         }
 
-        /* Responsive Styles */
-        @media (max-width: 992px) {
+        /* RESPONSIVE STYLES - ONLY ADDED FOR RESPONSIVENESS */
+
+        /* Large screens (desktop) */
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Medium screens (tablet) */
+        @media (max-width: 1199px) and (min-width: 768px) {
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+
+            .age-groups-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .programs-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .fun-facts-container {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .programs-container,
-            .activities-container {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .gallery-item:nth-child(1) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-
-            .gallery-item:nth-child(4) {
-                grid-row: span 1;
-            }
-
             .footer-container {
                 grid-template-columns: 1fr 1fr;
-            }
-
-            .anthem-pledge-container {
-                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
-        @media (max-width: 768px) {
+        /* Small screens (mobile) */
+        @media (max-width: 767px) {
+            body{
+                overflow-x: clip;
+            }
+            /* Header */
+            .header-top {
+                padding: 0.3rem 0;
+                font-size: 0.8rem;
+            }
+
+            .header-top .container {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .contact-info {
+                justify-content: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .contact-info span {
+                margin-right: 0;
+                margin: 0 0.5rem;
+                display: block;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .social-links a {
+                margin: 0 0.5rem;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -1447,48 +1493,244 @@
                 display: block;
             }
 
+            .logo img {
+                height: 50px;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            /* Hero */
+            .hero {
+                min-height: 90vh;
+                padding-top: 20px;
+            }
+
             .hero-content h2 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                text-align: center;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+                text-align: center;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+
+            .btn-outline {
+                margin-top: 1rem;
+            }
+
+            /* Sections */
+            .welcome,
+            .age-groups,
+            .programs,
+            .fun-facts,
+            .activities,
+            .anthem-pledge,
+            .testimonials,
+            .gallery,
+            .cta {
+                padding: 3rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
             }
 
             .welcome-content {
                 grid-template-columns: 1fr;
             }
 
-            .age-groups-container {
-                grid-template-columns: repeat(2, 1fr);
+            .welcome-text h3 {
+                font-size: 1.8rem;
             }
 
+            .welcome-image {
+                transform: rotate(0deg);
+            }
+
+            /* Age Groups */
+            .age-groups-container {
+                grid-template-columns: 1fr;
+            }
+
+            /* Programs */
+            .programs-container {
+                grid-template-columns: 1fr;
+            }
+
+            /* Fun Facts */
             .fun-facts-container {
                 grid-template-columns: 1fr;
             }
 
+            /* Activities */
+            .activities-container {
+                grid-template-columns: 1fr;
+            }
+
+            .activity {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .activity-icon {
+                margin: 0 auto 1rem;
+            }
+
+            /* Anthem Pledge */
+            .anthem-pledge-container {
+                grid-template-columns: 1fr;
+            }
+
+            /* Testimonials */
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
+
+            .testimonial-text::before {
+                font-size: 3rem;
+                top: -1rem;
+                left: -0.5rem;
+            }
+
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Gallery */
             .gallery-container {
                 grid-template-columns: 1fr;
             }
 
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+                grid-row: span 1;
+                height: 200px;
+            }
+
+            /* CTA */
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta p {
+                font-size: 1.1rem;
+            }
+
+            /* Footer */
             .footer-container {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
+            .footer-about h3::after,
+            .footer-links h3::after,
+            .footer-contact h3::after,
+            .footer-gallery h3::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
 
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-item i {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-links a:hover {
+                transform: none;
+            }
+
+            /* Modal */
             .modal-content {
                 width: 95%;
-                border-radius: 15px 15px 0 0;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                max-height: 90vh;
-                max-width: none;
-                transform: translateY(100%);
+                border-radius: 10px 10px 0 0;
+                margin-bottom: 0;
+                max-height: 85vh;
             }
 
             .modal.show .modal-content {
                 transform: translateY(0);
+            }
+
+            /* Navigation Drawer */
+            .nav-drawer {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            /* Form */
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tablet specific adjustments */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .nav-links li {
+                margin-left: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .logo h1 {
+                font-size: 1.6rem;
+            }
+
+            .age-groups-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Landscape orientation for mobile */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: 120vh;
+            }
+
+            .mobile-menu-btn {
+                position: relative;
+                z-index: 1001;
             }
         }
     </style>
@@ -1501,22 +1743,21 @@
             <div class="container">
                 <div class="contact-info">
                     <span><i class="fas fa-phone"></i> 08035270494, 08079845984</span>
-                    <span><i class="fas fa-envelope"></i> info@mercydewschool.edu.ng</span>
+                    {{-- <span><i class="fas fa-envelope"></i> info@mercydewschool.edu.ng</span> --}}
                 </div>
-                <div class="social-links">
+                {{-- <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <!-- Placeholder for school logo -->
-                    {{-- <div style="width: 60px; height: 60px; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2rem;">MDS</div> --}}
-                    <img src="{{asset('school-images/mercydew_logo.jpeg')}}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" />
+                    <img src="{{ asset('school-images/mercydew_logo.jpeg') }}"
+                        style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" />
                     <h1>Mercy <span>Dew</span> School</h1>
                 </div>
                 <ul class="nav-links">
@@ -1527,7 +1768,7 @@
                     <li><a href="#" class="nav-link" data-page="facilities">Facilities</a></li>
                     <li><a href="#" class="nav-link" data-page="gallery">Gallery</a></li>
                     <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
-                    <li><a href="/student/login" target="_blank">Student Portal</a></li>
+                    <li><a href="/student/login">Student Portal</a></li>
                 </ul>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
@@ -1545,7 +1786,8 @@
         <div class="container">
             <div class="hero-content">
                 <h2>We Learn To Excel</h2>
-                <p>A world-class standard school with diversity in learning, grooming students from kindergarten to secondary education with a focus on e-learning and computer-based training.</p>
+                <p>A world-class standard school with diversity in learning, grooming students from kindergarten to
+                    secondary education with a focus on e-learning and computer-based training.</p>
                 <button class="btn" id="joinFamilyBtn">Join Our Family</button>
                 <button class="btn btn-outline" id="scheduleVisitBtn">Schedule a Visit</button>
             </div>
@@ -1561,8 +1803,11 @@
             <div class="welcome-content">
                 <div class="welcome-text" data-aos="fade-right">
                     <h3>A Place Where Every Child Learns to Excel</h3>
-                    <p>At Mercy Dew School, we are passionate about providing a good standard education and eradicating examination malpractice in our society. We discovered the decay in our education system and are committed to grooming children from all classes with a solid foundation.</p>
-                    <p>We are currently implementing E-Learning in our school to prepare our students for a world that is switching to computer-based testing for all external examinations.</p>
+                    <p>At Mercy Dew School, we are passionate about providing a good standard education and eradicating
+                        examination malpractice in our society. We discovered the decay in our education system and are
+                        committed to grooming children from all classes with a solid foundation.</p>
+                    <p>We are currently implementing E-Learning in our school to prepare our students for a world that
+                        is switching to computer-based testing for all external examinations.</p>
                     <button class="btn" id="discoverStoryBtn">Discover Our Story</button>
                 </div>
                 <div class="welcome-image" data-aos="fade-left">
@@ -1585,7 +1830,8 @@
                         <i class="fas fa-baby"></i>
                     </div>
                     <h3>Kindergarten</h3>
-                    <p>KG1-KG3: Building strong foundations through play-based learning and structured activities that foster curiosity and creativity.</p>
+                    <p>KG1-KG3: Building strong foundations through play-based learning and structured activities that
+                        foster curiosity and creativity.</p>
                     <button class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Learn More</button>
                 </div>
                 <div class="age-card" data-aos="fade-up" data-aos-delay="200" data-age="primary">
@@ -1593,7 +1839,8 @@
                         <i class="fas fa-child"></i>
                     </div>
                     <h3>Primary</h3>
-                    <p>Basic 1-5: Developing academic excellence, critical thinking, and character through a comprehensive curriculum.</p>
+                    <p>Basic 1-5: Developing academic excellence, critical thinking, and character through a
+                        comprehensive curriculum.</p>
                     <button class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Learn More</button>
                 </div>
                 <div class="age-card" data-aos="fade-up" data-aos-delay="300" data-age="junior-secondary">
@@ -1601,7 +1848,8 @@
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <h3>Junior Secondary</h3>
-                    <p>3-year program: Preparing students for senior secondary with a broad-based curriculum and foundational knowledge.</p>
+                    <p>3-year program: Preparing students for senior secondary with a broad-based curriculum and
+                        foundational knowledge.</p>
                     <button class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Learn More</button>
                 </div>
                 <div class="age-card" data-aos="fade-up" data-aos-delay="400" data-age="senior-secondary">
@@ -1609,7 +1857,8 @@
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <h3>Senior Secondary</h3>
-                    <p>3-year program: Specialized programs preparing students for higher education and career paths with advanced academic opportunities.</p>
+                    <p>3-year program: Specialized programs preparing students for higher education and career paths
+                        with advanced academic opportunities.</p>
                     <button class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Learn More</button>
                 </div>
             </div>
@@ -1630,7 +1879,8 @@
                     </div>
                     <div class="card-content">
                         <h3>E-Learning & CBT</h3>
-                        <p>Preparing students for the digital age with computer-based training and e-learning platforms, ensuring they're ready for all external CBT examinations.</p>
+                        <p>Preparing students for the digital age with computer-based training and e-learning platforms,
+                            ensuring they're ready for all external CBT examinations.</p>
                         <div>
                             <span class="program-tag tag-academic">Technology</span>
                             <span class="program-tag tag-creative">Innovation</span>
@@ -1644,7 +1894,8 @@
                     </div>
                     <div class="card-content">
                         <h3>World Class Standards</h3>
-                        <p>Implementing world-class teaching methods and current revised curriculum to ensure our students can compete at any level globally.</p>
+                        <p>Implementing world-class teaching methods and current revised curriculum to ensure our
+                            students can compete at any level globally.</p>
                         <div>
                             <span class="program-tag tag-creative">Excellence</span>
                             <span class="program-tag tag-sports">Quality</span>
@@ -1658,7 +1909,8 @@
                     </div>
                     <div class="card-content">
                         <h3>Diverse Learning</h3>
-                        <p>Providing diversity in learning to create impactful students who are well-rounded and prepared for the challenges of the modern world.</p>
+                        <p>Providing diversity in learning to create impactful students who are well-rounded and
+                            prepared for the challenges of the modern world.</p>
                         <div>
                             <span class="program-tag tag-sports">Diversity</span>
                             <span class="program-tag tag-academic">Impact</span>
@@ -1713,7 +1965,8 @@
                     </div>
                     <div class="activity-content">
                         <h3>Academic Excellence</h3>
-                        <p>We provide world-class teaching with a focus on the current revised curriculum, ensuring our students can compete at any level.</p>
+                        <p>We provide world-class teaching with a focus on the current revised curriculum, ensuring our
+                            students can compete at any level.</p>
                     </div>
                 </div>
                 <div class="activity" data-aos="fade-left" data-activity="arts-center">
@@ -1722,7 +1975,8 @@
                     </div>
                     <div class="activity-content">
                         <h3>E-Learning</h3>
-                        <p>We embrace technology with e-learning and computer-based training to prepare students for the digital future.</p>
+                        <p>We embrace technology with e-learning and computer-based training to prepare students for the
+                            digital future.</p>
                     </div>
                 </div>
                 <div class="activity" data-aos="fade-right" data-activity="library">
@@ -1731,7 +1985,8 @@
                     </div>
                     <div class="activity-content">
                         <h3>Integrity</h3>
-                        <p>We are committed to eradicating examination malpractice and promoting honest academic achievement.</p>
+                        <p>We are committed to eradicating examination malpractice and promoting honest academic
+                            achievement.</p>
                     </div>
                 </div>
                 <div class="activity" data-aos="fade-left" data-activity="playground">
@@ -1740,7 +1995,8 @@
                     </div>
                     <div class="activity-content">
                         <h3>Passion for Education</h3>
-                        <p>We have a genuine passion for providing quality education to children from all backgrounds.</p>
+                        <p>We have a genuine passion for providing quality education to children from all backgrounds.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1758,43 +2014,46 @@
                     <h3>School Anthem</h3>
                     <div class="anthem-content">
                         <p>Mercy dew school is the best school,<br>
-                        is the best school in the world,<br>
-                        greater heights and mind exploits<br>
-                        is the portion of our school</p>
-                        
+                            is the best school in the world,<br>
+                            greater heights and mind exploits<br>
+                            is the portion of our school</p>
+
                         <p>Self discipline and self confidence<br>
-                        is the moral of our school,<br>
-                        knowledge is light we learn to excel<br>
-                        we are light and we shine bright</p>
-                        
+                            is the moral of our school,<br>
+                            knowledge is light we learn to excel<br>
+                            we are light and we shine bright</p>
+
                         <p>Mercy dew school is the best school,<br>
-                        is the best school in the world,<br>
-                        greater heights and mind exploits<br>
-                        is the portion of our school</p>
-                        
+                            is the best school in the world,<br>
+                            greater heights and mind exploits<br>
+                            is the portion of our school</p>
+
                         <p>We are the learners of Mercy Dew school,<br>
-                        We are the learners of mercy dew,<br>
-                        we learn and create peace of mind<br>
-                        come to us you will know that we are good,<br>
-                        we are proud of Mercy Dew</p>
-                        
+                            We are the learners of mercy dew,<br>
+                            we learn and create peace of mind<br>
+                            come to us you will know that we are good,<br>
+                            we are proud of Mercy Dew</p>
+
                         <p>We live as one and share peace and love<br>
-                        learning to excel is the best thing<br>
-                        come to us you we know that we are good<br>
-                        we are proud of Mercy Dew</p>
-                        
+                            learning to excel is the best thing<br>
+                            come to us you we know that we are good<br>
+                            we are proud of Mercy Dew</p>
+
                         <p>We are proud !<br>
-                        We are proud !!<br>
-                        We are proud!!!</p>
+                            We are proud !!<br>
+                            We are proud!!!</p>
                     </div>
                 </div>
                 <div class="pledge" data-aos="fade-left">
                     <h3>Our Philosophy</h3>
                     <div class="pledge-content">
-                        <p>At Mercy Dew School, our philosophy is simple yet powerful: <strong>Our students are learning to excel</strong>.</p>
-                        
-                        <p>This guiding principle shapes everything we do, from our curriculum design to our teaching methodologies. We believe that every child has the potential to achieve greatness when provided with the right environment, resources, and guidance.</p>
-                        
+                        <p>At Mercy Dew School, our philosophy is simple yet powerful: <strong>Our students are learning
+                                to excel</strong>.</p>
+
+                        <p>This guiding principle shapes everything we do, from our curriculum design to our teaching
+                            methodologies. We believe that every child has the potential to achieve greatness when
+                            provided with the right environment, resources, and guidance.</p>
+
                         <p>Our motto "WE LEARN TO EXCEL" reflects our commitment to:</p>
                         <ul>
                             <li>Providing diverse learning opportunities</li>
@@ -1818,7 +2077,9 @@
             </div>
             <div class="testimonials-container">
                 <div class="testimonial active">
-                    <p class="testimonial-text">Mercy Dew School has transformed my child's approach to learning. The focus on e-learning and computer-based training has prepared her for the digital age in ways I couldn't have imagined.</p>
+                    <p class="testimonial-text">Mercy Dew School has transformed my child's approach to learning. The
+                        focus on e-learning and computer-based training has prepared her for the digital age in ways I
+                        couldn't have imagined.</p>
                     <div class="testimonial-author">
                         <div class="author-image">
                             <img src="https://via.placeholder.com/70" alt="Parent">
@@ -1830,7 +2091,9 @@
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p class="testimonial-text">The school's commitment to eradicating examination malpractice while providing world-class education is truly remarkable. My children are learning with integrity and excellence.</p>
+                    <p class="testimonial-text">The school's commitment to eradicating examination malpractice while
+                        providing world-class education is truly remarkable. My children are learning with integrity and
+                        excellence.</p>
                     <div class="testimonial-author">
                         <div class="author-image">
                             <img src="https://via.placeholder.com/70" alt="Parent">
@@ -1842,7 +2105,9 @@
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p class="testimonial-text">As an educator myself, I appreciate how Mercy Dew School balances academic rigor with character development. The focus on "learning to excel" creates well-rounded individuals.</p>
+                    <p class="testimonial-text">As an educator myself, I appreciate how Mercy Dew School balances
+                        academic rigor with character development. The focus on "learning to excel" creates well-rounded
+                        individuals.</p>
                     <div class="testimonial-author">
                         <div class="author-image">
                             <img src="https://via.placeholder.com/70" alt="Parent">
@@ -1912,8 +2177,11 @@
     <section class="cta">
         <div class="container">
             <h2 data-aos="fade-up">Ready to Join the Mercy Dew School Family?</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Empower your child to excel with world-class education, e-learning, and values that prepare them for success in an ever-changing world. Applications are now open for all programs!</p>
-            <button class="btn" id="applyAdmissionBtn" data-aos="fade-up" data-aos-delay="200">Apply for Admission</button>
+            <p data-aos="fade-up" data-aos-delay="100">Empower your child to excel with world-class education,
+                e-learning, and values that prepare them for success in an ever-changing world. Applications are now
+                open for all programs!</p>
+            <button class="btn" id="applyAdmissionBtn" data-aos="fade-up" data-aos-delay="200">Apply for
+                Admission</button>
         </div>
     </section>
 
@@ -1923,7 +2191,8 @@
             <div class="footer-container">
                 <div class="footer-about">
                     <h3>About Mercy Dew School</h3>
-                    <p>A world-class standard school with diversity in learning, grooming students from kindergarten to secondary education with a focus on e-learning and computer-based training.</p>
+                    <p>A world-class standard school with diversity in learning, grooming students from kindergarten to
+                        secondary education with a focus on e-learning and computer-based training.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1941,7 +2210,7 @@
                         <li><a href="#" class="footer-link" data-page="facilities">Facilities</a></li>
                         <li><a href="#" class="footer-link" data-page="gallery">Photo Gallery</a></li>
                         <li><a href="#" class="footer-link" data-page="contact">Contact Us</a></li>
-                        <li><a href="#" target="_blank">Student Portal</a></li>
+                        <li><a href="/student/login"><i class="fas fa-sign-in-alt"></i> Student Portal</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -2015,17 +2284,23 @@
             </div>
             <div class="modal-body">
                 <h3>Our Story</h3>
-                <p>We have passion for a good standard education. We discovered the decay in our society through examination malpractice, and we glamor for a good education of children from all classes - from foundation which is kindergarten to secondary school certificate. Once they are groomed for world class standard, all forms of examination malpractice will be eradicated.</p>
+                <p>We have passion for a good standard education. We discovered the decay in our society through
+                    examination malpractice, and we glamor for a good education of children from all classes - from
+                    foundation which is kindergarten to secondary school certificate. Once they are groomed for world
+                    class standard, all forms of examination malpractice will be eradicated.</p>
                 <p>We are passionate about growing along with your class, not growing sackings in school.</p>
 
                 <h3>Our Mission</h3>
-                <p>To get children good education background from kindergarten to secondary education in order to build them with standard background to eradicate illiteracy in our society.</p>
+                <p>To get children good education background from kindergarten to secondary education in order to build
+                    them with standard background to eradicate illiteracy in our society.</p>
 
                 <h3>Our Vision</h3>
-                <p>To groom students in a world standard-based education, for our society to be free from examination malpractice.</p>
+                <p>To groom students in a world standard-based education, for our society to be free from examination
+                    malpractice.</p>
 
                 <h3>Our Values</h3>
-                <p>We provide world-class teaching and trust that we teach standard and current revised curriculum which we know our wards can face world-class competition at any level in our school.</p>
+                <p>We provide world-class teaching and trust that we teach standard and current revised curriculum which
+                    we know our wards can face world-class competition at any level in our school.</p>
 
                 <h3>Our Philosophy</h3>
                 <p>Our students are learning to excel.</p>
@@ -2034,10 +2309,12 @@
                 <p>KG1-KG3, Basic 1-5, Junior School (3 years), Senior School (3 years)</p>
 
                 <h3>Our Facilities</h3>
-                <p>Well-researched, world-class, state-of-the-art facilities including e-learning classrooms and computer labs.</p>
+                <p>Well-researched, world-class, state-of-the-art facilities including e-learning classrooms and
+                    computer labs.</p>
 
                 <h3>School Anthem</h3>
-                <p>Our school anthem reflects our commitment to excellence, self-discipline, and confidence in our students.</p>
+                <p>Our school anthem reflects our commitment to excellence, self-discipline, and confidence in our
+                    students.</p>
 
                 <div style="margin-top: 2rem;">
                     <button class="btn" id="viewAnthemPledgeBtn">View School Anthem</button>
@@ -2055,22 +2332,28 @@
             </div>
             <div class="modal-body">
                 <h3>Comprehensive Educational Programs</h3>
-                <p>At Mercy Dew School, we offer a continuum of educational programs designed to nurture students from their earliest years through to secondary education.</p>
+                <p>At Mercy Dew School, we offer a continuum of educational programs designed to nurture students from
+                    their earliest years through to secondary education.</p>
 
                 <h4>Kindergarten (KG1-KG3)</h4>
-                <p>Our youngest learners are nurtured in a stimulating environment that encourages exploration and early development through age-appropriate activities and play-based learning.</p>
+                <p>Our youngest learners are nurtured in a stimulating environment that encourages exploration and early
+                    development through age-appropriate activities and play-based learning.</p>
 
                 <h4>Primary (Basic 1-5)</h4>
-                <p>Developing academic excellence, critical thinking, and character through a comprehensive curriculum that balances core subjects with creative and physical education.</p>
+                <p>Developing academic excellence, critical thinking, and character through a comprehensive curriculum
+                    that balances core subjects with creative and physical education.</p>
 
                 <h4>Junior Secondary (3 years)</h4>
-                <p>Building on primary education with a broad-based curriculum that prepares students for senior secondary education and specialized subjects.</p>
+                <p>Building on primary education with a broad-based curriculum that prepares students for senior
+                    secondary education and specialized subjects.</p>
 
                 <h4>Senior Secondary (3 years)</h4>
-                <p>Preparing students for higher education and career paths with specialized programs, career guidance, and advanced academic opportunities.</p>
+                <p>Preparing students for higher education and career paths with specialized programs, career guidance,
+                    and advanced academic opportunities.</p>
 
                 <h3>Our Educational Approach</h3>
-                <p>Our curriculum focuses on world-class standards and current revised curriculum, providing students with the knowledge and skills needed to compete globally. We focus on:</p>
+                <p>Our curriculum focuses on world-class standards and current revised curriculum, providing students
+                    with the knowledge and skills needed to compete globally. We focus on:</p>
                 <ul>
                     <li>E-learning and computer-based training</li>
                     <li>Diverse learning methodologies</li>
@@ -2091,26 +2374,33 @@
             </div>
             <div class="modal-body">
                 <h3>Join Our Community of Excellence</h3>
-                <p>We welcome students who are eager to learn and excel in a world-class educational environment. Our admissions process is designed to identify students who will thrive in our learning environment.</p>
+                <p>We welcome students who are eager to learn and excel in a world-class educational environment. Our
+                    admissions process is designed to identify students who will thrive in our learning environment.</p>
 
                 <h3>Admission Process</h3>
                 <h4>Step 1: Inquiry</h4>
-                <p>Begin by contacting our admissions office or filling out our inquiry form. We'll provide you with detailed information about our programs and answer any questions you may have.</p>
+                <p>Begin by contacting our admissions office or filling out our inquiry form. We'll provide you with
+                    detailed information about our programs and answer any questions you may have.</p>
 
                 <h4>Step 2: School Visit</h4>
-                <p>Schedule a tour of our campus to experience our learning environment firsthand. You'll meet our dedicated staff and see our world-class facilities.</p>
+                <p>Schedule a tour of our campus to experience our learning environment firsthand. You'll meet our
+                    dedicated staff and see our world-class facilities.</p>
 
                 <h4>Step 3: Application</h4>
-                <p>Complete the application form and submit the required documents, including previous academic records, birth certificate, and passport photographs.</p>
+                <p>Complete the application form and submit the required documents, including previous academic records,
+                    birth certificate, and passport photographs.</p>
 
                 <h4>Step 4: Assessment</h4>
-                <p>Depending on the program, your child may be invited for an assessment or interaction session to help us understand their learning needs and potential.</p>
+                <p>Depending on the program, your child may be invited for an assessment or interaction session to help
+                    us understand their learning needs and potential.</p>
 
                 <h4>Step 5: Admission Decision</h4>
-                <p>Our admissions team will review the application and inform you of the decision. If accepted, you'll receive an offer letter with further instructions.</p>
+                <p>Our admissions team will review the application and inform you of the decision. If accepted, you'll
+                    receive an offer letter with further instructions.</p>
 
                 <h4>Step 6: Enrollment</h4>
-                <p>Complete the enrollment process by submitting the required fees and documents. Your child is now ready to begin their journey at Mercy Dew School!</p>
+                <p>Complete the enrollment process by submitting the required fees and documents. Your child is now
+                    ready to begin their journey at Mercy Dew School!</p>
 
                 <h3>Programs Offered</h3>
                 <ul>
@@ -2136,38 +2426,49 @@
             </div>
             <div class="modal-body">
                 <h3>World-Class Learning Environment</h3>
-                <p>At Mercy Dew School, we've created a stimulating and safe environment where students can learn, grow, and develop into well-rounded individuals. Our facilities are designed to support our educational philosophy and enhance the learning experience.</p>
+                <p>At Mercy Dew School, we've created a stimulating and safe environment where students can learn, grow,
+                    and develop into well-rounded individuals. Our facilities are designed to support our educational
+                    philosophy and enhance the learning experience.</p>
 
                 <h3>Academic Facilities</h3>
                 <h4>Modern Classrooms</h4>
-                <p>Our bright, well-equipped classrooms are designed to inspire learning and collaboration. Each classroom is equipped with modern teaching aids and resources.</p>
+                <p>Our bright, well-equipped classrooms are designed to inspire learning and collaboration. Each
+                    classroom is equipped with modern teaching aids and resources.</p>
 
                 <h4>E-Learning Labs</h4>
-                <p>State-of-the-art computer labs with high-speed internet ensure our students develop essential digital literacy skills and are prepared for computer-based testing.</p>
+                <p>State-of-the-art computer labs with high-speed internet ensure our students develop essential digital
+                    literacy skills and are prepared for computer-based testing.</p>
 
                 <h4>Library and Resource Center</h4>
-                <p>Our library is a treasure trove of knowledge with a diverse collection of books, digital resources, and comfortable reading spaces that support research and leisure reading.</p>
+                <p>Our library is a treasure trove of knowledge with a diverse collection of books, digital resources,
+                    and comfortable reading spaces that support research and leisure reading.</p>
 
                 <h3>Creative and Performing Arts Facilities</h3>
                 <h4>Art Studios</h4>
-                <p>Spacious art studios equipped with a variety of materials allow students to explore painting, drawing, sculpture, and crafts.</p>
+                <p>Spacious art studios equipped with a variety of materials allow students to explore painting,
+                    drawing, sculpture, and crafts.</p>
 
                 <h4>Music and Drama Rooms</h4>
-                <p>Dedicated spaces for music and drama activities help students develop their creative talents and self-expression.</p>
+                <p>Dedicated spaces for music and drama activities help students develop their creative talents and
+                    self-expression.</p>
 
                 <h3>Sports and Physical Development</h3>
                 <h4>Sports Fields</h4>
-                <p>Our campus includes well-maintained fields for various sports, promoting physical fitness, teamwork, and healthy competition.</p>
+                <p>Our campus includes well-maintained fields for various sports, promoting physical fitness, teamwork,
+                    and healthy competition.</p>
 
                 <h4>Playgrounds</h4>
-                <p>Age-appropriate playgrounds with safe, modern equipment provide spaces for younger children to develop motor skills and socialize through play.</p>
+                <p>Age-appropriate playgrounds with safe, modern equipment provide spaces for younger children to
+                    develop motor skills and socialize through play.</p>
 
                 <h3>Specialized Facilities</h3>
                 <h4>Science Laboratories</h4>
-                <p>Well-equipped laboratories provide hands-on learning experiences for students, allowing them to explore scientific concepts through practical experiments.</p>
+                <p>Well-equipped laboratories provide hands-on learning experiences for students, allowing them to
+                    explore scientific concepts through practical experiments.</p>
 
                 <h4>Multipurpose Hall</h4>
-                <p>A spacious hall for assemblies, performances, and special events that bring our school community together.</p>
+                <p>A spacious hall for assemblies, performances, and special events that bring our school community
+                    together.</p>
             </div>
         </div>
     </div>
@@ -2237,7 +2538,8 @@
             </div>
             <div class="modal-body">
                 <h3>Get in Touch</h3>
-                <p>We'd love to hear from you! Whether you have questions about our programs, want to schedule a visit, or need more information, our team is here to help.</p>
+                <p>We'd love to hear from you! Whether you have questions about our programs, want to schedule a visit,
+                    or need more information, our team is here to help.</p>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
                     <div>
@@ -2294,7 +2596,8 @@
                 <div
                     style="height: 300px; background-color: #f1f1f1; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-top: 1rem;">
                     <p><i class="fas fa-map-marked-alt"
-                            style="font-size: 2rem; color: var(--primary-color); margin-right: 1rem;"></i> Map of Mercy Dew School Location</p>
+                            style="font-size: 2rem; color: var(--primary-color); margin-right: 1rem;"></i> Map of Mercy
+                        Dew School Location</p>
                 </div>
             </div>
         </div>
@@ -2313,43 +2616,46 @@
                         <h3>School Anthem</h3>
                         <div class="anthem-content">
                             <p>Mercy dew school is the best school,<br>
-                            is the best school in the world,<br>
-                            greater heights and mind exploits<br>
-                            is the portion of our school</p>
-                            
+                                is the best school in the world,<br>
+                                greater heights and mind exploits<br>
+                                is the portion of our school</p>
+
                             <p>Self discipline and self confidence<br>
-                            is the moral of our school,<br>
-                            knowledge is light we learn to excel<br>
-                            we are light and we shine bright</p>
-                            
+                                is the moral of our school,<br>
+                                knowledge is light we learn to excel<br>
+                                we are light and we shine bright</p>
+
                             <p>Mercy dew school is the best school,<br>
-                            is the best school in the world,<br>
-                            greater heights and mind exploits<br>
-                            is the portion of our school</p>
-                            
+                                is the best school in the world,<br>
+                                greater heights and mind exploits<br>
+                                is the portion of our school</p>
+
                             <p>We are the learners of Mercy Dew school,<br>
-                            We are the learners of mercy dew,<br>
-                            we learn and create peace of mind<br>
-                            come to us you will know that we are good,<br>
-                            we are proud of Mercy Dew</p>
-                            
+                                We are the learners of mercy dew,<br>
+                                we learn and create peace of mind<br>
+                                come to us you will know that we are good,<br>
+                                we are proud of Mercy Dew</p>
+
                             <p>We live as one and share peace and love<br>
-                            learning to excel is the best thing<br>
-                            come to us you we know that we are good<br>
-                            we are proud of Mercy Dew</p>
-                            
+                                learning to excel is the best thing<br>
+                                come to us you we know that we are good<br>
+                                we are proud of Mercy Dew</p>
+
                             <p>We are proud !<br>
-                            We are proud !!<br>
-                            We are proud!!!</p>
+                                We are proud !!<br>
+                                We are proud!!!</p>
                         </div>
                     </div>
                     <div class="pledge">
                         <h3>Our Philosophy</h3>
                         <div class="pledge-content">
-                            <p>At Mercy Dew School, our philosophy is simple yet powerful: <strong>Our students are learning to excel</strong>.</p>
-                            
-                            <p>This guiding principle shapes everything we do, from our curriculum design to our teaching methodologies. We believe that every child has the potential to achieve greatness when provided with the right environment, resources, and guidance.</p>
-                            
+                            <p>At Mercy Dew School, our philosophy is simple yet powerful: <strong>Our students are
+                                    learning to excel</strong>.</p>
+
+                            <p>This guiding principle shapes everything we do, from our curriculum design to our
+                                teaching methodologies. We believe that every child has the potential to achieve
+                                greatness when provided with the right environment, resources, and guidance.</p>
+
                             <p>Our motto "WE LEARN TO EXCEL" reflects our commitment to:</p>
                             <ul>
                                 <li>Providing diverse learning opportunities</li>
@@ -2375,7 +2681,8 @@
             </div>
             <div class="modal-body">
                 <h3>Apply to Mercy Dew School</h3>
-                <p>Please complete the form below to apply for admission. All fields marked with an asterisk (*) are required.</p>
+                <p>Please complete the form below to apply for admission. All fields marked with an asterisk (*) are
+                    required.</p>
 
                 <form id="applicationForm">
                     <div class="form-group">
@@ -2442,14 +2749,16 @@
 
                     <div class="form-group">
                         <label for="additionalInfo">Additional Information</label>
-                        <textarea id="additionalInfo" class="form-control"
-                            placeholder="Any other information you would like to share"></textarea>
+                        <textarea id="additionalInfo" class="form-control" placeholder="Any other information you would like to share"></textarea>
                     </div>
 
                     <div class="form-group">
                         <div style="display: flex; align-items: flex-start;">
-                            <input type="checkbox" id="agreement" style="margin-right: 10px; margin-top: 5px;" required>
-                            <label for="agreement">I certify that the information provided is accurate and complete. I understand that any false information may result in disqualification of the application. *</label>
+                            <input type="checkbox" id="agreement" style="margin-right: 10px; margin-top: 5px;"
+                                required>
+                            <label for="agreement">I certify that the information provided is accurate and complete. I
+                                understand that any false information may result in disqualification of the application.
+                                *</label>
                         </div>
                     </div>
 
@@ -2470,7 +2779,8 @@
             </div>
             <div class="modal-body">
                 <h3>Experience Mercy Dew School</h3>
-                <p>We invite you to visit our campus and experience our learning environment. During your visit, you'll have the opportunity to tour our facilities, observe classes, and meet our dedicated staff.</p>
+                <p>We invite you to visit our campus and experience our learning environment. During your visit, you'll
+                    have the opportunity to tour our facilities, observe classes, and meet our dedicated staff.</p>
 
                 <form id="visitForm">
                     <div class="form-group">
@@ -2527,17 +2837,23 @@
         <div class="drawer-content">
             <ul class="drawer-menu">
                 <li><a href="#" class="drawer-link" data-page="home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#" class="drawer-link" data-page="about"><i class="fas fa-info-circle"></i> About Us</a>
+                <li><a href="#" class="drawer-link" data-page="about"><i class="fas fa-info-circle"></i> About
+                        Us</a>
                 </li>
-                <li><a href="#" class="drawer-link" data-page="programs"><i class="fas fa-book"></i> Programs</a></li>
-                <li><a href="#" class="drawer-link" data-page="admissions"><i class="fas fa-user-graduate"></i>
+                <li><a href="#" class="drawer-link" data-page="programs"><i class="fas fa-book"></i>
+                        Programs</a></li>
+                <li><a href="#" class="drawer-link" data-page="admissions"><i
+                            class="fas fa-user-graduate"></i>
                         Admissions</a></li>
-                <li><a href="#" class="drawer-link" data-page="facilities"><i class="fas fa-school"></i> Facilities</a>
+                <li><a href="#" class="drawer-link" data-page="facilities"><i class="fas fa-school"></i>
+                        Facilities</a>
                 </li>
-                <li><a href="#" class="drawer-link" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
-                <li><a href="#" class="drawer-link" data-page="contact"><i class="fas fa-envelope"></i> Contact Us</a>
+                <li><a href="#" class="drawer-link" data-page="gallery"><i class="fas fa-images"></i>
+                        Gallery</a></li>
+                <li><a href="#" class="drawer-link" data-page="contact"><i class="fas fa-envelope"></i>
+                        Contact Us</a>
                 </li>
-                <li><a href="#" target="_blank"><i class="fas fa-sign-in-alt"></i> Student Portal</a></li>
+                <li><a href="/student/login"><i class="fas fa-sign-in-alt"></i> Student Portal</a></li>
             </ul>
         </div>
     </div>
