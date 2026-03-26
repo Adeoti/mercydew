@@ -140,21 +140,58 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($studentData['subjects'] as $subject)
-                                <tr>
-                                    <td class="border px-2 py-1">{{ $subject['name'] }}</td>
-                                    @foreach ($dynamicHeaders as $header)
-                                        <td class="border px-2 py-1" style="text-align: center;">{{ $subject['scores'][$header] ?? 'N/A' }}</td>
-                                    @endforeach
-                                    <td class="border px-2 py-1">{{ $subject['total'] }}</td>
-                                    <td class="border px-2 py-1">{{ number_format($subject['average'],2) }}</td>
-                                    <td class="border px-2 py-1">{{ $subject['highest'] }}</td>
-                                    <td class="border px-2 py-1">{{ $subject['lowest'] }}</td>
-                                    <td class="border px-2 py-1" style="text-align: center;">{{ $subject['grade'] }}</td>
-                                    <td class="border px-2 py-1" style="font-size: 13px;">{{ $subject['remark'] }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                                @foreach ($studentData['subjects'] as $subject)
+                                    @php
+                                        $allZero = true;
+
+                                        foreach ($dynamicHeaders as $header) {
+                                            $value = $subject['scores'][$header] ?? null;
+
+                                            // Normalize value (this is the key fix)
+                                            $normalized = trim((string) $value);
+
+                                            if ($normalized !== '' && (float) $normalized != 0) {
+                                                $allZero = false;
+                                                break;
+                                            }
+                                        }
+                                    @endphp
+
+                                    <tr>
+                                        <td class="border px-2 py-1">{{ $subject['name'] }}</td>
+
+                                        @foreach ($dynamicHeaders as $header)
+                                            <td class="border px-2 py-1">
+                                                {{ $allZero ? '——' : $subject['scores'][$header] ?? 'N/A' }}
+                                            </td>
+                                        @endforeach
+
+                                        <td class="border px-2 py-1">
+                                            {{ $allZero ? '——' : $subject['total'] }}
+                                        </td>
+
+                                        <td class="border px-2 py-1">
+                                            {{ $allZero ? '——' : number_format($subject['average'], 2) }}
+                                        </td>
+
+                                        <td class="border px-2 py-1">
+                                            {{ $allZero ? '——' : $subject['highest'] }}
+                                        </td>
+
+                                        <td class="border px-2 py-1">
+                                            {{ $allZero ? '——' : $subject['lowest'] }}
+                                        </td>
+
+                                        <td class="border px-2 py-1">
+                                            {{ $allZero ? '——' : $subject['grade'] }}
+                                        </td>
+
+                                        <td class="border px-2 py-1">
+                                            {{ $allZero ? '——' : $subject['remark'] }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                     </table>
 
                     <div class="teacher_comment">

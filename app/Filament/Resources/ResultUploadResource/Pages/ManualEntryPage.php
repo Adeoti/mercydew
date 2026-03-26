@@ -164,9 +164,7 @@ class ManualEntryPage extends Page
             
             DB::commit();
             
-            return redirect()
-                ->route('filament.admin.resources.result-uploads.index')
-                ->with('success', 'Manual entry saved successfully!');
+           return redirect()->back()->with('success', 'Manual entry saved successfully!');
             
         } catch (\Exception $e) {
             DB::rollBack();

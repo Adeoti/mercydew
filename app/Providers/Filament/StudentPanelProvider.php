@@ -29,7 +29,9 @@ class StudentPanelProvider extends PanelProvider
         return $panel
             ->id('student')
             ->path('student')
-            ->brandName($schoolDetails['school_name'])
+            // ->brandName($schoolDetails['school_name'])
+            ->brandLogo(asset('school-images/mercydew_logo.jpeg'))
+            ->brandLogoHeight("60px")
             ->defaultThemeMode(ThemeMode::Light)
             ->darkMode(false)
             ->navigationItems([

@@ -45,7 +45,9 @@ class AdminPanelProvider extends PanelProvider
                 'purple' => Color::Purple,
             ])
             ->defaultThemeMode(ThemeMode::Light)
-            ->brandName($schoolDetails['school_name'])
+            // ->brandName($schoolDetails['school_name'])
+            ->brandLogo(asset('school-images/mercydew_logo.jpeg'))
+            ->brandLogoHeight("60px")
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
