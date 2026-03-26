@@ -206,6 +206,8 @@ class ManualEntryPage extends Page
             $studentData['position'] = $this->getPositionSuffix($positionMapping[$studentId] ?? 0);
         }
     }
+
+    
     
     private function getPositionSuffix($position): string
     {

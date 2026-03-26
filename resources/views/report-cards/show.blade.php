@@ -230,9 +230,9 @@
                             <div>
                                 <h2 class="text-xl font-bold">{{ $studentData['info']->name }}</h2>
                                 <p>Email: {{ $studentData['info']->email }}</p>
-                                <p>Attendance:
+                                {{-- <p>Attendance:
                                     {{ Attendance::where('result_root_id', $record->id)->where('student_id', $studentData['info']->id)->count() }}
-                                </p>
+                                </p> --}}
                                 <p class="contact-item"><span class="bold">Class:</span> {{ $class->name ?? 'N/A' }}
                                 </p>
                             </div>
@@ -253,9 +253,9 @@
                                     {{ $student->student->roll_number ?? 'N/A' }}</p>
                                 <p class="detail-item"><span class="bold">Parent:</span>
                                     {{ $student->student->guardian_name ?? 'N/A' }}</p>
-                                <p>Times present:
+                                {{-- <p>Times present:
                                     {{ Attendance::where('status', 'Present')->where('result_root_id', $record->id)->where('student_id', $studentData['info']->id)->count() }}
-                                </p>
+                                </p> --}}
                             </div>
 
                             <div class="contact-column">
